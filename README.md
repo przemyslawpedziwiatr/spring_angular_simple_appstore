@@ -28,4 +28,4 @@ npm install
 * to run project at localhost:3000
 ```
 npm run serve
-```
+``` 
