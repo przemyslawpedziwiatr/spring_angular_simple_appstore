@@ -9,3 +9,23 @@ Requirements:
 * Client App connect with the server (Rest/Spring);
 * Use socket - e.g. for mini-chat;
 * The client can react on server suggestions (e.g. update the game);
+
+Technical requirements:
+* node (downloaded from website)
+* npm (downloaded from website)
+* yeoman
+```
+npm install --global yo
+```
+* yeoman generator for angular
+```
+npm install --global generator-fountain-webapp
+```
+* to install project and dependencies
+```
+npm install
+```
+* to run project at localhost:3000
+```
+npm run serve
+```
