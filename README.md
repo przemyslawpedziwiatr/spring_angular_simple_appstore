@@ -21,11 +21,11 @@ npm install --global yo
 ```
 npm install --global generator-fountain-webapp
 ```
-* to install project and dependencies
+* to install angular project and dependencies (run in angular_app directory)
 ```
 npm install
 ```
-* to run project at localhost:3000
+* to run angular project (client app) at localhost:3000  (run in angular_app directory)
 ```
 npm run serve
 ``` 
