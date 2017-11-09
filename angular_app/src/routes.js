@@ -8,8 +8,20 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
+    .state('games', {
       url: '/',
-      component: 'app'
-    });
+      component: 'games'
+    })
+    .state('gamesAdd', {
+      url: '/games-add',
+      component: 'gamesAdd'
+    })
+    .state('gamesEdit', {
+      url: '/games/{gameId}',
+      component: 'gamesEdit',
+      params: {
+        id : null
+      }
+    })
+
 }

@@ -1,0 +1,26 @@
+<div ng-show="!form.submitted">
+    <div class="field row">
+        <div class="span2">Form ID:</div>
+        <div class="span4 ng-binding">1</div>
+    </div>
+    <form name="myForm" id="myForm" class="ng-pristine ng-invalid ng-invalid-required">
+        <!-- ngRepeat: field in form.form_fields --><div class="ng-scope">
+    <field-directive field="field" class="ng-isolate-scope ng-scope" ng-repeat="field in form.form_fields">
+        <div class="field row ng-scope">
+        <div class="span2 ng-binding">{{field.field_title}}</div>
+        <div class="span4">
+            <input type="text" ng-model="field.field_value" value="" ng-required="field.field_required" ng-disabled="field.field_disabled" class="ng-pristine ng-invalid ng-invalid-required" required="required">
+            <span class="required-error" ng-show="field.field_required &amp;&amp; !field.field_value">* required</span>
+        </div>
+</div></field-directive>
+        
+    </form>
+
+
+    <div class="form-actions">
+        <p class="text-center">
+            <button class="btn btn-success right" type="button" ng-disabled="!myForm.$valid" ng-click="gamesAddCtrl.addGame()" disabled="disabled"><i class="icon-edit icon-white"></i> Submit Form</button>
+            <button class="btn btn-danger right" type="button" ng-click="cancel()"><i class="icon-remove icon-white"></i> Cancel</button>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<ul>
+    <li ng-repeat="game in gamesCtrl.games">
+        <p ng-bind="game.title"></p>
+        <span ng-bind="game.version"></span>        
+        <img ng-src="{{game.icon_url}}"/>
+        <p ng-bind="game.description"></p>
+        <img ng-src="{{game.screenshot_url}}"/>
+        <input class="btn btn-primary" type="button" value="Remove Game" ng-click="gamesCtrl.removeGame(game.id)"></input>
+        <input type="button" value="Edit Game" ng-click="gamesCtrl.editGame(game.id)"></input>
+    </li>
+</ul>
+
+<input type="button" value="Add Game" ng-click="gamesCtrl.addGame()"></input>
