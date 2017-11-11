@@ -1,12 +1,12 @@
-(function(){
+(function () {
     angular
-    .module('app')
-    .component('gamesEdit', {
-      templateUrl: 'app/components/games/games-detail.html',
-      controller: GamesEditController,
-      controllerAs: 'gamesEditCtrl'
-    });
-  
+        .module('app')
+        .component('gamesEdit', {
+            templateUrl: 'app/components/games/games-detail.html',
+            controller: GamesEditController,
+            controllerAs: 'gamesEditCtrl'
+        });
+
     function GamesEditController(GamesService, $scope, $http, $state, $stateParams) {
         var vm = this;
 
@@ -23,14 +23,14 @@
 
         function getGame() {
             GamesService.getGameById($stateParams.gameId).then(
-                function success(response){
+                function success(response) {
                     vm.game = response.data;
                     $scope.form = getForm();
                 }
             );
         }
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $state.go('games');
         }
 
@@ -47,59 +47,59 @@
             // 
             $state.go('games');
         }
-   
-        $scope.updateFields = function(){
+
+        $scope.updateFields = function () {
             $scope.form = getForm();
         }
 
         function getForm() {
             return {
-            "form_id": 1,
-            "form_name": "Games added",
-            "form_fields": [
-              {
-                "field_id": 1,
-                "field_title": "Title",
-                "field_type": "textfield",
-                "field_value": vm.game.title,
-                "field_required": true,
-                "field_disabled": false
-              },
-              {
-                "field_id": 2,
-                "field_title": "Version",
-                "field_type": "textfield",
-                "field_value": vm.game.version,
-                "field_required": true,
-                "field_disabled": false
-              },
-              {
-                "field_id": 3,
-                "field_title": "Screenshot_Url",
-                "field_type": "textfield",
-                "field_value": vm.game.screenshot,
-                "field_required": false,
-                "field_disabled": false
-              },
-              {
-                "field_id": 4,
-                "field_title": "Icon_url",
-                "field_type": "textfield",
-                "field_value": vm.game.icon_url,
-                "field_required": false,
-                "field_disabled": false
-              },
-              {
-                "field_id": 5,
-                "field_title": "Description",
-                "field_type": "textfield",
-                "field_value": vm.game.description,
-                "field_required": true,
-                "field_disabled": false
-              }
-            ],
-            "submitted": false
-          };
+                "form_id": 1,
+                "form_name": "Games added",
+                "form_fields": [
+                    {
+                        "field_id": 1,
+                        "field_title": "Title",
+                        "field_type": "textfield",
+                        "field_value": vm.game.title,
+                        "field_required": true,
+                        "field_disabled": false
+                    },
+                    {
+                        "field_id": 2,
+                        "field_title": "Version",
+                        "field_type": "textfield",
+                        "field_value": vm.game.version,
+                        "field_required": true,
+                        "field_disabled": false
+                    },
+                    {
+                        "field_id": 3,
+                        "field_title": "Screenshot_Url",
+                        "field_type": "textfield",
+                        "field_value": vm.game.screenshot,
+                        "field_required": false,
+                        "field_disabled": false
+                    },
+                    {
+                        "field_id": 4,
+                        "field_title": "Icon_url",
+                        "field_type": "textfield",
+                        "field_value": vm.game.icon_url,
+                        "field_required": false,
+                        "field_disabled": false
+                    },
+                    {
+                        "field_id": 5,
+                        "field_title": "Description",
+                        "field_type": "textfield",
+                        "field_value": vm.game.description,
+                        "field_required": true,
+                        "field_disabled": false
+                    }
+                ],
+                "submitted": false
+            };
         }
     }
 })();

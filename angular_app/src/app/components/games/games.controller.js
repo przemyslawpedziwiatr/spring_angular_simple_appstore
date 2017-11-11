@@ -1,44 +1,44 @@
-(function(){
-    angular
+(function () {
+  angular
     .module('app')
     .component('games', {
       templateUrl: 'app/components/games/games.html',
       controller: GamesController,
       controllerAs: 'gamesCtrl'
     });
-  
-    function GamesController(GamesService, $http, $state) {
-        var vm = this;
-        
-        vm.getGames = getGames;
-        vm.removeGame = removeGame;
-        vm.addGame = addGame;
-        vm.editGame = editGame;
-        vm.games;
 
-        (function init() {
-            vm.getGames();
-        })();
+  function GamesController(GamesService, $http, $state) {
+    var vm = this;
 
-        function getGames(){
-            GamesService.getGames().then(function(response){
-                vm.games = response.data;
-            });
-        }
+    vm.getGames = getGames;
+    vm.removeGame = removeGame;
+    vm.addGame = addGame;
+    vm.editGame = editGame;
+    vm.games;
 
-        function removeGame(id){
-            GamesService.removeGame(id).then(function success(){
-                vm.getGames();                
-            })
-        }
+    (function init() {
+      vm.getGames();
+    })();
 
-        function editGame(id){
-            $state.go('gamesEdit',{gameId:id});
-        }
-
-        function addGame(){
-            $state.go('gamesAdd');
-        }
-
+    function getGames() {
+      GamesService.getGames().then(function (response) {
+        vm.games = response.data;
+      });
     }
+
+    function removeGame(id) {
+      GamesService.removeGame(id).then(function success() {
+        vm.getGames();
+      })
+    }
+
+    function editGame(id) {
+      $state.go('gamesEdit', { gameId: id });
+    }
+
+    function addGame() {
+      $state.go('gamesAdd');
+    }
+
+  }
 })();
