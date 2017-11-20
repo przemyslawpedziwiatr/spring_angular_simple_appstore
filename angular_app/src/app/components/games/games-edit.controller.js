@@ -7,25 +7,27 @@
             controllerAs: 'gamesEditCtrl'
         });
 
-    function GamesEditController(GamesService, $scope, $http, $state, $stateParams) {
+    function GamesEditController(GamesService, $rootScope, $scope, $http, $state, $stateParams) {
         var vm = this;
 
         vm.getGame = getGame;
         vm.updateGame = updateGame;
-        vm.game = {};
-
-        $scope.form;
+        $scope.form = {};
 
         (function init() {
             vm.getGame();
-            $scope.form = getForm();
         })();
 
         function getGame() {
             GamesService.getGameById($stateParams.gameId).then(
                 function success(response) {
-                    vm.game = response.data;
-                    $scope.form = getForm();
+                    $scope.form = {
+                        "title": response.data.title,
+                        "version": response.data.version,
+                        "description": response.data.description,
+                        "screenshot": response.data.screenshot_url,
+                        "icon": response.data.icon_url
+                    };
                 }
             );
         }
@@ -35,71 +37,41 @@
         }
 
         function updateGame() {
+            var icon_new = "";
+            var screenshot_new = "";
+
+            if (!$scope.form.icon_new) {
+                icon_new = $scope.form.icon;
+            } else {
+                icon_new = ['data:',
+                    $scope.form.icon_new.filetype,
+                    ';base64, ',
+                    $scope.form.icon_new.base64].join('');
+            }
+
+            if (!$scope.form.screenshot_new) {
+                screenshot_new = $scope.form.screenshot;
+            } else {
+                screenshot_new = ['data:',
+                    $scope.form.screenshot_new.filetype,
+                    ';base64, ',
+                    $scope.form.screenshot_new.base64].join('');
+            }
+
             GamesService.updateGame(
                 $stateParams.gameId,
-                $scope.form.form_fields[0].field_value,
-                $scope.form.form_fields[1].field_value,
-                $scope.form.form_fields[2].field_value,
-                $scope.form.form_fields[3].field_value,
-                $scope.form.form_fields[4].field_value
-            )
+                $scope.form.title,
+                $scope.form.version,
+                $scope.form.description,
+                icon_new,
+                screenshot_new
+            ).then(function () {
+                $rootScope.$emit("RefreshGames", {});
+            });
 
-            // 
             $state.go('games');
         }
 
-        $scope.updateFields = function () {
-            $scope.form = getForm();
-        }
 
-        function getForm() {
-            return {
-                "form_id": 1,
-                "form_name": "Games added",
-                "form_fields": [
-                    {
-                        "field_id": 1,
-                        "field_title": "Title",
-                        "field_type": "textfield",
-                        "field_value": vm.game.title,
-                        "field_required": true,
-                        "field_disabled": false
-                    },
-                    {
-                        "field_id": 2,
-                        "field_title": "Version",
-                        "field_type": "textfield",
-                        "field_value": vm.game.version,
-                        "field_required": true,
-                        "field_disabled": false
-                    },
-                    {
-                        "field_id": 3,
-                        "field_title": "Screenshot_Url",
-                        "field_type": "textfield",
-                        "field_value": vm.game.screenshot,
-                        "field_required": false,
-                        "field_disabled": false
-                    },
-                    {
-                        "field_id": 4,
-                        "field_title": "Icon_url",
-                        "field_type": "textfield",
-                        "field_value": vm.game.icon_url,
-                        "field_required": false,
-                        "field_disabled": false
-                    },
-                    {
-                        "field_id": 5,
-                        "field_title": "Description",
-                        "field_type": "textfield",
-                        "field_value": vm.game.description,
-                        "field_required": true,
-                        "field_disabled": false
-                    }
-                ],
-                "submitted": false
-            };
-        }
     }
 })();

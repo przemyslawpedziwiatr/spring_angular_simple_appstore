@@ -10,7 +10,7 @@
 		this.getGameById = getGameById;
 		this.updateGame = updateGame;
 
-		function addGame(title, version, screenshot_url, icon_url, description) {
+		function addGame(title, version, description, icon_url, screenshot_url) {
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 
 			return $http({
@@ -26,7 +26,7 @@
 			});
 		}
 
-		function updateGame(id, title, version, screenshot_url, icon_url, description) {
+		function updateGame(id, title, version, description, icon_url, screenshot_url) {
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 
 			return $http({

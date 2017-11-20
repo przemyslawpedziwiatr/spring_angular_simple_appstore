@@ -7,11 +7,13 @@
       controllerAs: 'info'
     });
 
-  function GamesInfoController(GamesService, $http, $state, $stateParams) {
+  function GamesInfoController(GamesService, $http, $state, $stateParams, $rootScope) {
     var vm = this;
 
     vm.game = {};
-
+    vm.editGame = editGame;
+    vm.removeGame = removeGame;
+    
     (function init() {
       getGame($stateParams.gameId);
     })();
@@ -24,7 +26,7 @@
 
     function removeGame(id) {
       GamesService.removeGame(id).then(function success() {
-        vm.getGames();
+        $rootScope.$emit("RefreshGames", {});
       })
     }
 

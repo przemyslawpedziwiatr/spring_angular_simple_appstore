@@ -1,6 +1,20 @@
-<div class="game-title">
-  <span class="game-name" ng-bind="info.game.title"></span>
-  <span class="game-version" ng-bind="info.game.version"></span>
-</div>
+<div class="game">
+  <div class="game-title">
+    <span class="game-name" ng-bind="info.game.title"></span>
+    <span class="game-version" ng-bind="info.game.version"></span>
+    <img class="game-icon" ng-src="{{info.game.icon_url}}" />
+  </div>
 
-<p ng-bind="info.game.description"></p>
+  <div class="game-screenshot">
+    <h4>Screenshot</h4>
+    <img ng-src="{{info.game.screenshot_url}}" />
+  </div>
+
+  <div class="game-description">
+    <h4>Description</h4>
+    <p ng-bind="info.game.description"></p>
+  </div>
+
+  <input class="btn btn-primary" type="button" value="Remove Game" ng-click="info.removeGame(info.game.id)"></input>
+  <input type="button" class="btn btn-secondary" value="Edit Game" ng-click="info.editGame(info.game.id)"></input>
+</div>

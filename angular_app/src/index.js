@@ -1,2 +1,2 @@
 angular
-  .module('app', ['ui.router','ngRoute']);
+  .module('app', ['ui.router','ngRoute','naif.base64']);

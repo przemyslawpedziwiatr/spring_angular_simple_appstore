@@ -7,7 +7,7 @@
       controllerAs: 'gamesCtrl'
     });
 
-  function GamesController(GamesService, $http, $state, $route, $routeParams) {
+  function GamesController(GamesService, $http, $rootScope, $state, $route, $routeParams) {
     var vm = this;
 
     vm.getGames = getGames;
@@ -25,6 +25,10 @@
         vm.games = response.data;
       });
     }
+
+    $rootScope.$on('RefreshGames', function() {
+      vm.getGames();
+    });
 
     function removeGame(id) {
       GamesService.removeGame(id).then(function success() {
