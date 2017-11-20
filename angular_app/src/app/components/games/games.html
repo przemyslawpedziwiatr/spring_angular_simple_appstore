@@ -1,13 +1,25 @@
-<ul>
+<h3>Games</h3>
+<!-- <li class="actiave"> -->
+<ul class="nav nav-sidebar">
     <li ng-repeat="game in gamesCtrl.games">
-        <p ng-bind="game.title"></p>
-        <span ng-bind="game.version"></span>        
-        <img ng-src="{{game.icon_url}}"/>
-        <p ng-bind="game.description"></p>
-        <img ng-src="{{game.screenshot_url}}"/>
-        <input class="btn btn-primary" type="button" value="Remove Game" ng-click="gamesCtrl.removeGame(game.id)"></input>
-        <input type="button" value="Edit Game" ng-click="gamesCtrl.editGame(game.id)"></input>
+        <a href="/game-info/1" ng-bind="game.title"></a>
     </li>
 </ul>
 
-<input type="button" value="Add Game" ng-click="gamesCtrl.addGame()"></input>
+<!-- <div class="container">
+    <div class="col-md-3 col-xs-3 ">
+        <h2>Lista gier</h2>
+        <nav>
+
+        </nav>
+
+    </div>
+    <div class="col-md-9">
+        <span ng-bind="game.version"></span>
+        <img ng-src="{{game.icon_url}}" />
+        <p ng-bind="game.description"></p>
+        <img ng-src="{{game.screenshot_url}}" />
+        <input class="btn btn-primary" type="button" value="Remove Game" ng-click="gamesCtrl.removeGame(game.id)"></input>
+        <input type="button" value="Edit Game" ng-click="gamesCtrl.editGame(game.id)"></input>
+    </div>
+</div> -->

@@ -1,0 +1,51 @@
+body {
+  background-color: #334883;
+}
+
+.main {
+  background-color: #fff;
+}
+
+.sidebar{
+  background-color: #334883;
+}
+
+.navbar-inverse {
+  border-radius: 0px !important;
+    background-color: #16203a;
+    border-color: #16203a;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration: none;
+  background-color: #334883;
+  color: #60c3ca;
+}
+
+.sidebar {
+  color: #fff;
+}
+
+a.new-game{
+  cursor: pointer;
+}
+
+/*
+  Game details
+*/
+
+.game-title {
+  margin: 1em 0;
+}
+
+.game-title .game-name {
+  font-size: 32px;
+}
+
+.game-title .game-version{
+  font-size: 10px;
+}

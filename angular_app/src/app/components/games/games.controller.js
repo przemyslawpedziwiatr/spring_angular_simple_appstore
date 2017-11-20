@@ -7,7 +7,7 @@
       controllerAs: 'gamesCtrl'
     });
 
-  function GamesController(GamesService, $http, $state) {
+  function GamesController(GamesService, $http, $state, $route, $routeParams) {
     var vm = this;
 
     vm.getGames = getGames;
