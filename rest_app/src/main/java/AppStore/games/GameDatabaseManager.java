@@ -54,7 +54,7 @@ public class GameDatabaseManager {
         return "";
     }
 
-    public boolean updateGame(int id, String title, String description, String icon_url, String version, String screenshot_url)
+    public boolean updateGame(int id, String title, String version, String description, String screenshot_url, String icon_url)
             throws Exception {
         if (id != -1) {
 
@@ -97,42 +97,47 @@ public class GameDatabaseManager {
         }
 
         db.closeConnection();
-        return nodes.toString();
+        if(!nodes.isEmpty()) {
+            return nodes.toString();
+        }
+        return "";
     }
 
     private int getLastGameId() throws Exception {
         PreparedStatement statement = db.getConn().prepareStatement("SELECT ID FROM GAMES ORDER BY ID DESC LIMIT 1");
         ResultSet result = statement.executeQuery();
+        int returnedResult = -1;
         while (result.next()) {
-            db.closeConnection();
-            return result.getInt("ID");
+            returnedResult = result.getInt("ID");
         }
-        return -1;
+        db.closeConnection();
+        return returnedResult;
     }
 
-    public boolean addGame(String title, String description, String icon_url, String version, String screenshot)
+    public boolean addGame(String title, String version, String description,  String screenshot, String icon_url)
             throws Exception {
         int lastId = getLastGameId();
 
-        if (lastId != -1) {
-
-            icon_url = icon_url.isEmpty() ?
-                    "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-game-controller-b-128.png"
-                    : icon_url;
-            screenshot = screenshot.isEmpty() ?
-                    "https://i.kinja-img.com/gawker-media/image/upload/t_original/vdlqqt4tb2ycrwr3ucru.jpg"
-                    : screenshot;
-
-            PreparedStatement statement = db.getConn().prepareStatement(
-                    String.format("INSERT INTO GAMES "
-                                    + "VALUES (%d, '%s', '%s', '%s', '%s', '%s')",
-                            lastId + 1, title, icon_url, version, description, screenshot)
-            );
-            statement.execute();
-            db.closeConnection();
-            return true;
+        if (lastId == -1) {
+            lastId = 1;
         }
-        return false;
+
+        icon_url = icon_url.isEmpty() ?
+                "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-game-controller-b-128.png"
+                : icon_url;
+        screenshot = screenshot.isEmpty() ?
+                "https://i.kinja-img.com/gawker-media/image/upload/t_original/vdlqqt4tb2ycrwr3ucru.jpg"
+                : screenshot;
+
+        PreparedStatement statement = db.getConn().prepareStatement(
+                String.format("INSERT INTO GAMES "
+                                + "VALUES (%d, '%s', '%s', '%s', '%s', '%s')",
+                        lastId + 1, title, version, description, icon_url, screenshot)
+        );
+        statement.execute();
+        db.closeConnection();
+
+        return true;
     }
 
 }

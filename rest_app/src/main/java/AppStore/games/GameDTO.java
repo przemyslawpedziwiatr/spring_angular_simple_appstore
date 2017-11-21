@@ -5,8 +5,8 @@ package AppStore.games;
  */
 public class GameDTO {
     public String title;
-    public String description;
-    public String screenshot_url;
-    public String icon_url;
     public String version;
+    public String description;
+    public String icon_url;
+    public String screenshot_url;
 }

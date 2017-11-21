@@ -26,7 +26,7 @@ public class GameController  {
 
     @RequestMapping(value="/games/{id}", method= {RequestMethod.PUT})
     public boolean updateGame(@PathVariable(value="id") int id, @RequestBody GameDTO game) throws Exception {
-        GDB.updateGame(id, game.title, game.description, game.icon_url, game.version, game.screenshot_url);
+        GDB.updateGame(id, game.title, game.version, game.description, game.screenshot_url, game.icon_url);
         return true;
     }
 
@@ -39,7 +39,7 @@ public class GameController  {
     
     @RequestMapping(value="/games", method= {RequestMethod.POST})
     public boolean addGame(@RequestBody GameDTO game) throws Exception {
-        GDB.addGame(game.title, game.description, game.icon_url, game.version, game.screenshot_url);
+        GDB.addGame(game.title, game.version, game.description, game.screenshot_url, game.icon_url);
         return true;
     }
 }
