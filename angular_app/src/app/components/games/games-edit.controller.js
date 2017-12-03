@@ -7,7 +7,8 @@
             controllerAs: 'gamesEditCtrl'
         });
 
-    function GamesEditController(GamesService, $rootScope, $scope, $http, $state, $stateParams) {
+    function GamesEditController(GamesService, $rootScope, $scope, 
+        $http, $state, $stateParams) {
         var vm = this;
 
         vm.getGame = getGame;
@@ -25,8 +26,8 @@
                         "title": response.data.title,
                         "version": response.data.version,
                         "description": response.data.description,
-                        "screenshot": response.data.screenshot_url,
-                        "icon": response.data.icon_url
+                        "screenshot": response.data.screenshot,
+                        "icon": response.data.icon
                     };
                 }
             );
@@ -39,6 +40,7 @@
         function updateGame() {
             var icon_new = "";
             var screenshot_new = "";
+            var file_new = "";
 
             if (!$scope.form.icon_new) {
                 icon_new = $scope.form.icon;
@@ -58,13 +60,23 @@
                     $scope.form.screenshot_new.base64].join('');
             }
 
+            if (!$scope.form.file_new) {
+                file_new = $scope.form.file;
+            } else {
+                file_new = ['data:',
+                    $scope.form.file_new.filetype,
+                    ';base64, ',
+                    $scope.form.file_new.base64].join('');
+            }
+
             GamesService.updateGame(
                 $stateParams.gameId,
                 $scope.form.title,
                 $scope.form.version,
                 $scope.form.description,
                 icon_new,
-                screenshot_new
+                screenshot_new,
+                file_new
             ).then(function () {
                 $rootScope.$emit("RefreshGames", {});
             });

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane collapsible="false" minHeight="900.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.HomeController">
+<TitledPane collapsible="false" minHeight="900.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.HomeController">
    <content>
       <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="659.0" prefWidth="998.0">
         <columnConstraints>
@@ -39,12 +39,12 @@
                   </AnchorPane>
                 <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                      <children>
-                        <Label fx:id="title" layoutX="14.0" layoutY="14.0" text="Label">
+                        <Label fx:id="title" layoutX="14.0" layoutY="14.0">
                            <font>
                               <Font size="24.0" />
                            </font></Label>
-                        <Label fx:id="version" layoutX="14.0" layoutY="49.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="28.0" text="Label" AnchorPane.topAnchor="49.0" />
-                        <Label fx:id="description" layoutX="14.0" layoutY="72.0" text="Label" />
+                        <Label fx:id="version" layoutX="14.0" layoutY="49.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="28.0" AnchorPane.topAnchor="49.0" />
+                        <Label fx:id="description" layoutX="14.0" layoutY="72.0" />
                         <ImageView fx:id="screenshot" fitHeight="200.0" fitWidth="200.0" layoutX="466.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                      </children></AnchorPane>
               </items>

@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS GAMES (
+    ID bigint auto_increment,
+    TITLE varchar(255),
+    ICON varchar(2147483647),
+    VERSION varchar(2147483647),
+    DESCRIPTION varchar(1000),
+    SCREENSHOT varchar(2147483647),
+    FILE varchar(2147483647)
+    )
+
+SELECT * FROM GAMES
+

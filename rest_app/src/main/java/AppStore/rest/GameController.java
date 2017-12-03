@@ -1,7 +1,6 @@
 package AppStore.rest;
 
-import AppStore.database.DbConnection;
-import AppStore.games.GameDTO;
+import AppStore.games.Game;
 import AppStore.games.GameDatabaseManager;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +24,8 @@ public class GameController  {
     }
 
     @RequestMapping(value="/games/{id}", method= {RequestMethod.PUT})
-    public boolean updateGame(@PathVariable(value="id") int id, @RequestBody GameDTO game) throws Exception {
-        GDB.updateGame(id, game.title, game.version, game.description, game.screenshot_url, game.icon_url);
+    public boolean updateGame(@PathVariable(value="id") int id, @RequestBody Game game) throws Exception {
+        GDB.updateGame(id, game);
         return true;
     }
 
@@ -35,11 +34,10 @@ public class GameController  {
         GDB.removeGame(id);
         return true;
     }
-
     
     @RequestMapping(value="/games", method= {RequestMethod.POST})
-    public boolean addGame(@RequestBody GameDTO game) throws Exception {
-        GDB.addGame(game.title, game.version, game.description, game.screenshot_url, game.icon_url);
+    public boolean addGame(@RequestBody Game game) throws Exception {
+        GDB.addGame(game);
         return true;
     }
 }

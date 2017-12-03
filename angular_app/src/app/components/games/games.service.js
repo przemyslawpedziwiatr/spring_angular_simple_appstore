@@ -10,7 +10,7 @@
 		this.getGameById = getGameById;
 		this.updateGame = updateGame;
 
-		function addGame(title, version, description, icon_url, screenshot_url) {
+		function addGame(title, version, description, icon_b64, screenshot_b64, file_b64) {
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 
 			return $http({
@@ -19,14 +19,15 @@
 				data: JSON.stringify({
 					"title": title,
 					"version": version,
-					"screenshot_url": screenshot_url,
-					"icon_url": icon_url,
-					"description": description
+					"screenshot_b64": screenshot_b64,
+					"icon_b64": icon_b64,
+					"description": description,
+					"file_b64" : file_b64
 				})
 			});
 		}
 
-		function updateGame(id, title, version, description, icon_url, screenshot_url) {
+		function updateGame(id, title, version, description, icon_b64, screenshot_b64, file_b64) {
 			$http.defaults.headers.post["Content-Type"] = "application/json";
 
 			return $http({
@@ -35,9 +36,10 @@
 				data: JSON.stringify({
 					"title": title,
 					"version": version,
-					"screenshot_url": screenshot_url,
-					"icon_url": icon_url,
-					"description": description
+					"screenshot_b64": screenshot_b64,
+					"icon_b64": icon_b64,
+					"description": description,
+					"file_b64" : file_b64
 				})
 			});
 		}
