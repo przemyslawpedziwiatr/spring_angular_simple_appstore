@@ -37,7 +37,7 @@ public class FileController {
         boolean isFolderAvailable = createFolderIfNotExists();
         if(isFolderAvailable) {
             createDataFileIfNotAvailable();
-            createDataFolderIfNotAvailable();
+//            createDataFolderIfNotAvailable();
         }
     }
 
