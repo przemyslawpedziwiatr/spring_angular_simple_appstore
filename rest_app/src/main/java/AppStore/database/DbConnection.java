@@ -22,7 +22,7 @@ public class DbConnection{
         try{
             conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");
         } catch (Exception e){
-
+            System.out.println(e);
         }
     }
 

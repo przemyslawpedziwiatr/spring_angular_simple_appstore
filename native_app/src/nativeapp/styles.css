@@ -1,0 +1,15 @@
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-background-color: transparent;
+}
+
+.split-pane:vertical > .split-pane-divider {
+    -fx-background-color: transparent;
+}

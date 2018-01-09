@@ -10,4 +10,6 @@ public class Game {
     public String icon_b64;
     public String screenshot_b64;
     public String file_b64;
+    public int default_hash;
+    public int current_version_hash;
 }

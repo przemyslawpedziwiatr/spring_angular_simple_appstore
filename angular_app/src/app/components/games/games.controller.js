@@ -43,6 +43,5 @@
     function addGame() {
       $state.go('gamesAdd');
     }
-
   }
 })();

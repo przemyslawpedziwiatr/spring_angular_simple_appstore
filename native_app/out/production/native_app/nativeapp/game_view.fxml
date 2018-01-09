@@ -1,10 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #3D6399;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.GameViewController">
+<VBox fx:id="GameView" prefHeight="760.0" prefWidth="1068.0" style="-fx-background-color: #72c4e5;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.GameViewController">
   <children>
-      <FlowPane fx:id="tileContainer" prefHeight="200.0" prefWidth="200.0" />
+      <Label text="Games" textFill="WHITE">
+         <font>
+            <Font name="Bebas Neue" size="60.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="15.0" top="5.0" />
+         </VBox.margin>
+      </Label>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <FlowPane columnHalignment="RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane prefHeight="99.0" prefWidth="247.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <FlowPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="game_detail_icon" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="game_detail_title" textFill="WHITE">
+                                 <font>
+                                    <Font name="Bebas Neue" size="22.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </FlowPane>
+                        <Label fx:id="game_detail_description" textFill="WHITE" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <FlowPane.margin>
+                        <Insets top="10.0" />
+                     </FlowPane.margin>
+                  </GridPane>
+                  <ImageView fx:id="game_detail_screenshot" fitHeight="241.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true" />
+               </children></FlowPane>
+         </center>
+         <right>
+            <SplitPane dividerPositions="0.18699186991869918, 0.4796747967479675, 0.5, 0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #72c4e5;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+              <items>
+                  <Label text="Need help?" textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </Label>
+                  <TextArea fx:id="chatArea" editable="false" prefHeight="547.0" prefWidth="258.0" style="-fx-background-color: #46c4e5;" wrapText="true" />
+                  <TextField fx:id="chatMessage" maxWidth="1.7976931348623157E308" onKeyPressed="#sendTextKey" promptText="Type your message..." />
+                  <Button fx:id="chatSendButton" mnemonicParsing="false" onMouseClicked="#sendText" text="Send" />
+                  <Label />
+              </items>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </SplitPane>
+         </right>
+         <left>
+            <ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="640.0" minWidth="375.0" prefHeight="400.0" style="-fx-background-color: transparent;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+               <content>
+                  <FlowPane fx:id="tileContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="125.0" />
+               </content>
+            </ScrollPane>
+         </left>
+      </BorderPane>
+      <ToolBar prefHeight="40.0" prefWidth="1068.0" style="-fx-background-color: #46c4e5;" VBox.vgrow="ALWAYS">
+        <items>
+            <Label fx:id="notification" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+        </items>
+      </ToolBar>
   </children>
 </VBox>

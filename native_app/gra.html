@@ -1,0 +1,64 @@
+<html>
+<head>
+	<style>
+
+	#rect {
+		width: 100px;
+		height: 65px;
+		position: fixed;
+		top: 0px;
+		left: 50px;
+
+		background-color: red;
+
+		border-radius: 20px;
+
+		font-size: 12px;
+		font-family: Tahoma;
+		color: #fff;
+		text-align: center;
+
+		cursor: pointer;
+	}
+
+	#rect:hover {
+		color: #000;
+	}
+
+	</style>
+
+</head>
+
+<body>
+	<h2>Points: <span id="points">0</span></h2>
+	<div id="rect">
+		<h1>CLICK!</h1>
+	</div>	
+</body>
+<script type="text/javascript">
+
+var rect = document.getElementById("rect");
+
+rect.onclick = function() {
+	var points = document.getElementById("points");
+	points.innerText = Number.parseInt(points.innerText) + 1;
+	moveRectToRandomPosition();
+};
+
+
+function moveRectToRandomPosition() {
+		var rect = document.getElementById("rect");
+
+	rect.style.left = Number.parseInt(Math.random()*document.body.clientWidth);
+
+	rect.style.top = Number.parseInt(Math.random()*document.body.clientHeight);
+
+}
+
+setInterval(function() {
+	moveRectToRandomPosition();
+}, 1000);
+
+
+</script>
+</html>

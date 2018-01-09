@@ -23,6 +23,12 @@ public class GameController  {
         return GDB.getGame(id);
     }
 
+    @RequestMapping(value="/game/{hash}", method= {RequestMethod.GET})
+    public String gameByHash(@PathVariable(value="hash") int hash) throws Exception {
+        return GDB.getGameByHash(hash);
+
+    }
+
     @RequestMapping(value="/games/{id}", method= {RequestMethod.PUT})
     public boolean updateGame(@PathVariable(value="id") int id, @RequestBody Game game) throws Exception {
         GDB.updateGame(id, game);

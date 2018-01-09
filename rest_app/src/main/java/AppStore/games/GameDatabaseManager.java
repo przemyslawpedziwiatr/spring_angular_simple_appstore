@@ -46,6 +46,8 @@ public class GameDatabaseManager {
                 node.put("description", result.getString("description"));
                 node.put("screenshot", result.getString("screenshot"));
                 node.put("file", result.getString("file"));
+                node.put("default_hash", result.getString("default_hash"));
+                node.put("current_version_hash", result.getString("current_version_hash"));
             }
 
             db.closeConnection();
@@ -54,6 +56,35 @@ public class GameDatabaseManager {
         }
         return "";
     }
+
+    public String getGameByHash(int hash) throws Exception {
+        if (hash != -1) {
+            PreparedStatement statement = db.getConn().prepareStatement(
+                    String.format("SELECT * FROM GAMES WHERE DEFAULT_HASH=%d", hash)
+            );
+            ResultSet result = statement.executeQuery();
+
+            ObjectNode node = new ObjectMapper().createObjectNode();
+
+            while (result.next()) {
+                node.put("id", result.getInt("id"));
+                node.put("title", result.getString("title"));
+                node.put("icon", result.getString("icon"));
+                node.put("version", result.getString("version"));
+                node.put("description", result.getString("description"));
+                node.put("screenshot", result.getString("screenshot"));
+                node.put("file", result.getString("file"));
+                node.put("default_hash", result.getString("default_hash"));
+                node.put("current_version_hash", result.getString("current_version_hash"));
+            }
+
+            db.closeConnection();
+
+            return node.toString();
+        }
+        return "";
+    }
+
 
     public boolean updateGame(int id, Game game)
             throws Exception {
@@ -66,14 +97,17 @@ public class GameDatabaseManager {
                                     + "VERSION = %d, "
                                     + "DESCRIPTION = '%s', "
                                     + "SCREENSHOT = '%s', "
-                                    + "FILE= '%s' "
+                                    + "FILE= '%s', "
+                                    + "CURRENT_VERSION_HASH= %d"
                                     + "WHERE id = '%d'",
                             game.title,
                             game.icon_b64,
                             Integer.parseInt(game.version),
                             game.description,
                             game.screenshot_b64,
-                            game.file_b64, id)
+                            game.file_b64,
+                            this.hashCode(),
+                            id)
             );
             statement.execute();
             db.closeConnection();
@@ -85,7 +119,9 @@ public class GameDatabaseManager {
 
 
     public String getGames() throws Exception {
-        PreparedStatement statement = db.getConn().prepareStatement("SELECT id, title, icon, version, description, screenshot, file FROM GAMES");
+        PreparedStatement statement = db.getConn().prepareStatement(
+                "SELECT id, title, icon, version, description, screenshot, file, " +
+                        "default_hash, current_version_hash FROM GAMES");
         ResultSet result = statement.executeQuery();
 
         ArrayList<ObjectNode> nodes = new ArrayList();
@@ -100,6 +136,8 @@ public class GameDatabaseManager {
             node.put("description", result.getString("description"));
             node.put("screenshot", result.getString("screenshot"));
             node.put("file", result.getString("file"));
+            node.put("default_hash", result.getString("default_hash"));
+            node.put("current_version_hash", result.getString("current_version_hash"));
 
             nodes.add(node);
         }
@@ -124,16 +162,19 @@ public class GameDatabaseManager {
 
     public boolean addGame(Game game)
             throws Exception {
-        PreparedStatement statement = db.getConn().prepareStatement(
-                String.format("INSERT INTO GAMES(title, icon, version, description, screenshot, file) "
-                                + "VALUES ('%s', '%s', %d, '%s', '%s','%s')",
-                        game.title,
-                        game.icon_b64,
-                        Integer.parseInt(game.version),
-                        game.description,
-                        game.screenshot_b64,
-                        game.file_b64)
-        );
+
+        String sql = String.format("INSERT INTO GAMES(title, icon, version, description, screenshot, file, default_hash, current_version_hash) "
+                        + "VALUES ('%s', '%s', %d, '%s', '%s','%s', %d, %d)",
+                game.title,
+                game.icon_b64,
+                Integer.parseInt(game.version),
+                game.description,
+                game.screenshot_b64,
+                game.file_b64,
+                game.hashCode(),
+                game.hashCode());
+
+        PreparedStatement statement = db.getConn().prepareStatement(sql);
         statement.execute();
         db.closeConnection();
 

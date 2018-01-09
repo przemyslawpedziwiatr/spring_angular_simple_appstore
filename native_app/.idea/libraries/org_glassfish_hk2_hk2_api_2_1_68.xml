@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="org.glassfish.hk2:hk2-api:2.1.68" type="repository">
+    <properties maven-id="org.glassfish.hk2:hk2-api:2.1.68" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/hk2-api-2.1.68.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/osgi-resource-locator-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hk2-utils-2.1.68.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

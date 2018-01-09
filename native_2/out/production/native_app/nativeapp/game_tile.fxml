@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="TileGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#increaseOpacity" onMouseExited="#decreaseOpacity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #50bae5; -fx-border-insets: 15px; -fx-padding: 15px; -fx-background-insets: 15px;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.GameTileController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Pane fx:id="image_parent" onMouseClicked="#displayGame" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
+         <children>
+            <ImageView fx:id="game_screenshot" fitHeight="130.0" fitWidth="161.0" layoutX="159.0" opacity="0.22" pickOnBounds="true" />
+         </children>
+      </Pane>
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: #61c4ed;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="39.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="22.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="38.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="downloadButton" layoutX="231.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#handleDownloadClick" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #2e9dcc;" text="Download" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+          <Button fx:id="playButton" mnemonicParsing="false" onMouseClicked="#handlePlayClick" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #2e9dcc;" text="Play!" textFill="WHITE" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="updateButton" mnemonicParsing="false" onMouseClicked="#handleUpdateClick" prefHeight="29.0" prefWidth="64.0" style="-fx-background-color: #2e9dcc;" text="Update" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </GridPane>
+      <GridPane prefWidth="136.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="62.0" minWidth="10.0" prefWidth="41.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="120.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="game_icon" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label fx:id="game_title" text="Name" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Bebas Neue" size="31.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</GridPane>
