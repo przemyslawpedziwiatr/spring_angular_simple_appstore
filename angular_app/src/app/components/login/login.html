@@ -1,0 +1,27 @@
+<login-area ng-if="!loginCtrl.isLoggedIn()">
+    <div class="login-holder">
+        <h2>AppStore's Admin</h2>
+        <form action="">
+            <label for="Name">
+                <input 
+                    placeholder="Admin e-mail..."            
+                    ng-model="loginCtrl.name" 
+                    type="text" >    
+            </label>
+            <label for="Pass">
+                <input 
+                    ng-keypress="loginCtrl.buttonLogin($event)"
+                    placeholder="Admin password..."
+                    ng-model="loginCtrl.pass"
+                    type="text">
+            </label>
+            <p 
+                class="login-helper">
+                {{loginCtrl.help}}
+            </p>
+            <input type="button" 
+                value="Login"
+                ng-click="loginCtrl.login()"></input>
+        </form>
+    </div>
+</login-area>

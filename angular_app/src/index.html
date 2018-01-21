@@ -9,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
 
+  <script src="socket/socket.io.js"></script>
+
   <!-- build:css({.tmp,src}) styles/vendor.css -->
   <!-- bower:css -->
   <!-- run `gulp inject` to automatically populate bower styles dependencies -->
@@ -38,7 +40,7 @@
       </div>
     </div>
   </nav>
-
+  <login></login>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-md-2 sidebar">
@@ -49,6 +51,7 @@
       </div>
     </div>
   </div>
+  <chat></chat>
 </body>
 
 <!-- build:js({.tmp,src}) scripts/vendor.js -->
