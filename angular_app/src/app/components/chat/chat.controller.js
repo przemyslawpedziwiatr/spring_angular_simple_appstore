@@ -13,7 +13,7 @@
     var messages = [];
     var message = document.getElementById("message");
     var sendButton = document.getElementById("send");
-    q
+
     var header = document.getElementById("chat-header");
 
     var name = "Admin";
