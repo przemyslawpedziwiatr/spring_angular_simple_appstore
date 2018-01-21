@@ -3,7 +3,8 @@ body {
 }
 
 .main {
-  background-color: #fff;
+  background-color: #239aff;
+  color: #fff;
 }
 
 .sidebar{
@@ -14,6 +15,10 @@ body {
   border-radius: 0px !important;
     background-color: #16203a;
     border-color: #16203a;
+}
+
+img {
+  width: 100%;
 }
 
 .navbar {

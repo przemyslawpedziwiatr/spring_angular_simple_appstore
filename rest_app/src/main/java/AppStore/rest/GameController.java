@@ -1,10 +1,15 @@
 package AppStore.rest;
 
+import AppStore.database.DbConnection;
 import AppStore.games.Game;
 import AppStore.games.GameDatabaseManager;
+import org.h2.engine.Database;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+@CrossOrigin(origins = "*")
 @RestController
 public class GameController  {
     private GameDatabaseManager GDB;
@@ -37,7 +42,7 @@ public class GameController  {
 
     @RequestMapping(value="/games", method= {RequestMethod.DELETE})
     public boolean deleteGame(@RequestParam(value="id") int id) throws Exception {
-        GDB.removeGame(id);
+        GDB.removeGame(id);;
         return true;
     }
     
@@ -46,4 +51,5 @@ public class GameController  {
         GDB.addGame(game);
         return true;
     }
+
 }

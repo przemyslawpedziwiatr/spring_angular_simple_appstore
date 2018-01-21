@@ -3,7 +3,7 @@ package nativeapp.library;
 import javafx.scene.image.Image;
 import nativeapp.game.Game;
 import nativeapp.utilities.B64Converter;
-import nativeapp.views.GameTile;
+import nativeapp.views.tile.GameTile;
 
 /**
  * Created by panpr on 06.12.2017.

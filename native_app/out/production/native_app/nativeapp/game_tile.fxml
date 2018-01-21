@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<GridPane fx:id="TileGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#increaseOpacity" onMouseExited="#decreaseOpacity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #50bae5; -fx-border-insets: 15px; -fx-padding: 15px; -fx-background-insets: 15px;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.GameTileController">
+<GridPane fx:id="TileGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#increaseOpacity" onMouseExited="#decreaseOpacity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #50bae5; -fx-border-insets: 15px; -fx-padding: 15px; -fx-background-insets: 15px;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.tile.GameTileViewController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

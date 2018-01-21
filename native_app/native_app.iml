@@ -11,16 +11,17 @@
     <orderEntry type="library" exported="" name="com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" exported="" name="org.glassfish.hk2:hk2-api:2.1.68" level="project" />
     <orderEntry type="library" exported="" name="com.google.guava:guava:18.0" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../Downloads/hk2-locator-2.1.64.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" exported="" name="cglib:cglib:2.2" level="project" />
+      <orderEntry type="module-library" exported="">
+        <library>
+          <CLASSES>
+            <root url="jar://$MODULE_DIR$/lib/hk2-locator-2.1.64.jar!/" />
+          </CLASSES>
+          <JAVADOC />
+          <SOURCES />
+        </library>
+      </orderEntry>
+      <orderEntry type="library" exported="" name="cglib:cglib:2.2" level="project" />
     <orderEntry type="library" exported="" name="com.corundumstudio.socketio:netty-socketio:1.7.1" level="project" />
   </component>
 </module>
+

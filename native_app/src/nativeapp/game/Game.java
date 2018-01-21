@@ -1,5 +1,6 @@
 package nativeapp.game;
 
+import nativeapp.connector.GameConnector;
 import nativeapp.data.GamesDataController;
 import nativeapp.utilities.DesktopApi;
 import org.json.simple.JSONArray;
@@ -36,15 +37,6 @@ public class Game {
         this.screenshot = screenshot;
     }
 
-    public Game(String title, String description, String version, String icon, String screenshot, String file_b64) {
-        this.title = title;
-        this.description = description;
-        this.version = version;
-        this.icon = icon;
-        this.screenshot = screenshot;
-        this.file = file_b64;
-    }
-
     // Important methods
 
     public void downloadGame() {
@@ -72,14 +64,8 @@ public class Game {
 
     public boolean updateGame() {
         try {
-            JSONParser parser = new JSONParser();
-            Client client = ClientBuilder.newClient();
-            WebTarget resource = client.target("http://localhost:8080/game/" + default_hash);
-
-            String response = resource.request(MediaType.APPLICATION_JSON).get(String.class);
-
-            JSONObject updatedGame;
-            updatedGame = (JSONObject) parser.parse(response);
+            GameConnector connector = new GameConnector();
+            JSONObject updatedGame = connector.getGameUpdateByHash(default_hash);
 
             this.removeGame();
 

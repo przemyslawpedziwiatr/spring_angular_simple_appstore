@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="GameView" prefHeight="760.0" prefWidth="1068.0" style="-fx-background-color: #72c4e5;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nativeapp.views.GameViewController">
+<VBox fx:id="GameView" prefHeight="760.0" prefWidth="1068.0" style="-fx-background-color: #72c4e5;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="nativeapp.views.games.GameViewController">
   <children>
       <Label text="Games" textFill="WHITE">
          <font>
@@ -113,3 +113,4 @@
       </ToolBar>
   </children>
 </VBox>
+

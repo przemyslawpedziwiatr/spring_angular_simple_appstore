@@ -1,7 +1,7 @@
 package nativeapp.library;
 
 import nativeapp.game.Game;
-import nativeapp.views.GameTile;
+import nativeapp.views.tile.GameTile;
 
 import java.util.ArrayList;
 import java.util.List;
